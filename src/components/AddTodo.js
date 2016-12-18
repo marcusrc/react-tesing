@@ -2,17 +2,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
-export const AddTodo = ({ dispatch }) => {
+export const AddTodo = (props) => {
   let input
-
+  console.log('AddTodo>>>', props);
   return (
     <div>
       <form onSubmit={e => {
+        console.log('on submit!!!!');
         e.preventDefault()
         if (!input.value.trim()) {
           return
         }
-        dispatch(addTodo(input.value))
+        props.onAdd(input.value)
+        console.log('intput.value:::',input.value);
         input.value = ''
       }}>
         <input ref={node => {
@@ -25,8 +27,12 @@ export const AddTodo = ({ dispatch }) => {
     </div>
   )
 }
-AddTodo.contextTypes = {
-  store : React.PropTypes.object
-}
 
-export default connect()(AddTodo);
+AddTodo.propTypes = {
+  onAdd : React.PropTypes.func.isRequired
+}
+// AddTodo.contextTypes = {
+//   store : React.PropTypes.object
+// }
+
+export default AddTodo;

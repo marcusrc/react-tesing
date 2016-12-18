@@ -7,7 +7,7 @@ import AddTodo from './AddTodo';
 // explain redux store error 
 describe('AddTodo', () => {
   it('2. should render correct', () => {
-    const wrapper = shallow(<AddTodo/>);
+    const wrapper = shallow(<AddTodo onAdd={jest.fn()}/>);
     
     expect(wrapper).to.have.exactly(1).descendants('form');
     expect(wrapper).to.have.exactly(1).descendants('input');

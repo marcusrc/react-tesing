@@ -1,8 +1,10 @@
+import React from 'react'
 import { connect } from 'react-redux'
 import { toggleTodo } from '../actions'
 import TodoList from '../components/TodoList'
 
 const getVisibleTodos = (todos, filter) => {
+  console.log('getVisibleTodos>>>', todos, filter);
   switch (filter) {
     case 'SHOW_ALL':
       return todos
@@ -15,23 +17,40 @@ const getVisibleTodos = (todos, filter) => {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    todos: getVisibleTodos(state.todos, state.visibilityFilter)
-  }
+const VisibleTodoList = (props) => {
+  console.log('VisibleTodoList',props);
+  return (
+    <TodoList 
+      todos={props.todos} 
+      onTodoClick={props.onTodoClick}/>
+  )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onTodoClick: (id) => {
-      dispatch(toggleTodo(id))
-    }
-  }
-}
+// const mapStateToProps = (state, props) => {
+//   //console.log('props.todos', props);
+//   return {
+//     todos: getVisibleTodos(state.todos, state.visibilityFilter)
+//   }
+// }
 
-const VisibleTodoList = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList)
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onTodoClick: (id) => {
+//       dispatch(toggleTodo(id))
+//     }
+//   }
+// }
+
+// const VisibleTodoList = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(TodoList)
+
+VisibleTodoList.propTypes = {
+  todos: React.PropTypes.array,
+  filter: React.PropTypes.string,
+  onTodoClick: React.PropTypes.func
+}
 
 export default VisibleTodoList
+
