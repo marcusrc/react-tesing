@@ -7,7 +7,7 @@ import VisibleTodoList from './VisibleTodoList'
 import TodoList from '../components/TodoList'
 
 export const App = (props) => {
-  console.log('APP', props.todos);
+  // console.log('APP', props.todos);
   return (<div>
     <AddTodo onAdd={props.onAdd}/>
     <VisibleTodoList 
@@ -18,12 +18,12 @@ export const App = (props) => {
   </div>
 )}
 
-App.conextTyps={
-  store : React.PropTypes.object
-}
+// App.contextTypes={
+//   store : React.PropTypes.object
+// }
 export default connect(
   (state, props)=>{
-    console.log('APP in connect>>>', state, props);
+    // console.log('APP in connect>>>', state, props);
     return{
       todos: state.todos,
       filter: state.visibilityFilter

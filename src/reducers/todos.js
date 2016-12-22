@@ -1,5 +1,5 @@
 const todo = (state = {}, action) => {
-   console.log('reducer!!!todo!!!', action.type);
+  // console.log('reducer!!!todo!!!', action.type);
   switch (action.type) {
     case 'ADD_TODO':
       state = {
@@ -7,7 +7,7 @@ const todo = (state = {}, action) => {
         text: action.text,
         completed: false
       }
-      console.log('ADD_TODO>>>', state);
+      // console.log('ADD_TODO>>>', state);
       return state
     case 'TOGGLE_TODO':
       if (state.id !== action.id) {
@@ -24,14 +24,14 @@ const todo = (state = {}, action) => {
 }
 
 const todos = (state = [], action) => {
-  console.log('reducer!!!todos!!!', action.type, state);
+  // console.log('reducer!!!todos!!!', action.type, state);
   switch (action.type) {
     case 'ADD_TODO':
       state = [
         ...state,
         todo(undefined, action)
       ]
-      console.log('todos!!!>>', state);
+      // console.log('todos!!!>>', state);
       
       return state
       // return state

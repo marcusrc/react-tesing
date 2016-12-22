@@ -4,17 +4,17 @@ import { addTodo } from '../actions'
 
 export const AddTodo = (props) => {
   let input
-  console.log('AddTodo>>>', props);
+  // console.log('AddTodo>>>', props);
   return (
     <div>
       <form onSubmit={e => {
-        console.log('on submit!!!!');
+        // console.log('on submit!!!!');
         e.preventDefault()
         if (!input.value.trim()) {
           return
         }
         props.onAdd(input.value)
-        console.log('intput.value:::',input.value);
+        // console.log('intput.value:::',input.value);
         input.value = ''
       }}>
         <input ref={node => {

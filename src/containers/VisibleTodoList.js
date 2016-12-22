@@ -4,7 +4,7 @@ import { toggleTodo } from '../actions'
 import TodoList from '../components/TodoList'
 
 const getVisibleTodos = (todos, filter) => {
-  console.log('getVisibleTodos>>>', todos, filter);
+  // console.log('getVisibleTodos>>>', todos, filter);
   switch (filter) {
     case 'SHOW_ALL':
       return todos
@@ -18,10 +18,10 @@ const getVisibleTodos = (todos, filter) => {
 }
 
 const VisibleTodoList = (props) => {
-  console.log('VisibleTodoList',props);
+  // console.log('VisibleTodoList',props);
   return (
     <TodoList 
-      todos={props.todos} 
+      todos={getVisibleTodos(props.todos, props.filter)} 
       onTodoClick={props.onTodoClick}/>
   )
 }

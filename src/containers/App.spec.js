@@ -1,4 +1,4 @@
-import { createRenderer } from 'react-addons-test-utils'
+// import { createRenderer } from 'react-addons-test-utils'
 
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
@@ -16,10 +16,10 @@ import Footer from '../components/Footer'
 
 function addItem(wrapper, item) {
     // console.log('addItem>>> ', wrapper.find(AddTodo).find('input').get(0));
-    wrapper.find(AddTodo).find('input').get(0).value = item;
+    wrapper.find('input').get(0).value = item;
     // console.log('addItem>>>value ', wrapper.find(AddTodo).find('input').get(0).value);
-    wrapper.find(AddTodo).find('input').simulate('change');
-    wrapper.find(AddTodo).find('form').simulate('submit');
+    wrapper.find('input').simulate('change');
+    wrapper.find('form').simulate('submit');
 }
 
 function assertItems(wrapper, items) {
@@ -44,15 +44,6 @@ function getMounted(initialState = undefined) {
 }
 
 describe('App', () => {
- it('should render correctly (react-addons-test-utils)', () => {
-    const renderer = createRenderer()
-    renderer.render(<App onAdd={jest.fn()}/>)
-    const actual = renderer.getRenderOutput()
-    console.log(actual);
-    expect(actual.type).to.equal('div')
-    //let children = actual.props.children;
-    // expect(actual.props.children).to.deep.equal( [ [AddTodo], [VisibleTodoList], [Footer]])
- })
 
  it('1. should render correctly (enzyme shallow)', ()=>{
      const wrapper = shallow(<App onAdd={jest.fn()}/>)

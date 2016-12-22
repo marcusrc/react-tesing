@@ -3,11 +3,11 @@ import { shallow } from 'enzyme'
 import React from 'react'
 
 import Todo from './Todo'
+
 function assertItem(wrapper, text, toggle) {
     expect(wrapper).to.have.exactly(1).descendants('li')   
     expect(wrapper.find('li')).to.have.text(text)
-
-
+    expect(wrapper.find('li')).to.contain.style('text-decoration', toggle ? 'line-through' : 'none')
 }
 
 describe('Todo rendering', ()=>{
